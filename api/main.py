@@ -1,12 +1,12 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import joblib
 import numpy as np
 
-from flask_cors import CORS
-
 app = Flask(__name__)
-CORS(app)
 
+# # Example: Saving the model
+# model = XGBRegressor()
+# Assuming you've trained your model
 # Load the model
 model = joblib.load('salary_prediction_all_countries_dt.h5')
 
@@ -31,6 +31,10 @@ countries_dict = {'England': 0, 'France': 1, 'Canada': 2, 'Germany': 3, 'United 
 company_size_dict = {'S': 0, 'M': 1, 'L': 2}
 
 english_level_dict = {'Intermediate': 0, 'Professional': 1, 'Full Professional': 2}
+
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -82,3 +86,4 @@ def predict():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
