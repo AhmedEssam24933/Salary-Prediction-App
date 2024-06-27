@@ -96,7 +96,7 @@ app = Flask(__name__)
 # model = XGBRegressor()
 # Assuming you've trained your model
 # Load the model
-model = joblib.load('salary_prediction_all_countries.h5')
+model = joblib.load('salary_prediction_all_countries_dt.h5')
 
 # Define the mapping dictionaries
 job_titles_dict = {'Data Scientist': 0, 'Machine Learning Engineer': 1, 'Front End Developer': 2, 'Back End Developer': 3, 'Data Engineer': 4,
